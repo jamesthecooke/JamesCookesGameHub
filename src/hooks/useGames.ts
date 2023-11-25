@@ -2,20 +2,23 @@ import React, { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
+
+//defining the interface that represents the shape of the game data from the api
+
+export interface Game {
+  id: number;
+  name: string;
+  background_image: string;
+}
+
+// defining the interface that represents the shape of the object from the api
+
+interface FetchGamesResponse {
+  count: number;
+  results: Game[];
+}
+
 const useGames = () => {
-  //defining the interface that represents the shape of the game data from the api
-
-  interface Game {
-    id: number;
-    name: string;
-  }
-
-  // defining the interface that represents the shape of the object from the api
-
-  interface FetchGamesResponse {
-    count: number;
-    results: Game[];
-  }
 
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
