@@ -9,6 +9,13 @@ export interface Game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: { platform: Platform }[]
+}
+// represents the platform objects
+export interface Platform {
+    id: number;
+    name: string;
+    slug: string;
 }
 
 // defining the interface that represents the shape of the object from the api
