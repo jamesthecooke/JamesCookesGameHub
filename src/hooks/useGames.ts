@@ -30,25 +30,32 @@ const useGames = () => {
 
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
+  // use state for loading skelingtons
+  const [isLoading, setLoading] = useState(false)
   // use effect to fetch the data from api
 
 
   useEffect(() => {
     const controller = new AbortController();
 
+    setLoading(true);
     apiClient
       .get<FetchGamesResponse>("/games", { signal: controller.signal})
       // using axios to get the data properites to access the body
-      .then((res) => setGames(res.data.results))
+      .then((res) => {
+        setGames(res.data.results);
+      setLoading(false)})
       .catch((err) => {
         // only displays the cancelled message if cancelled
         if (err instanceof CanceledError) return;
-        setError(err.message)});
+        setError(err.message)
+        setLoading(false);
+      });
 
     return () => controller.abort();
   }, []);
 
-  return { games, error };
+  return { games, error, isLoading };
 };
 
 export default useGames;
