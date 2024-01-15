@@ -8,7 +8,7 @@ function App() {
     // this grid is styled within charkra - template areas decides how it will be displayed for different screen sizes - The show tag will only show when it is over 1024 (lg)
     <Grid
       templateAreas={{
-        base: `" nav main"`,
+        base: `" nav " "main"`,
         lg: `" nav nav" "aside main"`, //1024px
       }}
       templateColumns={{
