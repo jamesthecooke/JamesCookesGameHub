@@ -1,4 +1,5 @@
 import useData from "./useData";
+import { Genre } from "./useGenres";
 
 
 //defining the interface that represents the shape of the game data from the api
@@ -17,6 +18,6 @@ export interface Platform {
     slug: string;
 }
 
-const useGames = () => useData<Game>('/games');
+const useGames = (selectedGenre: Genre | null) => useData<Game>('/games' , {params: {genres: selectedGenre?.id}}, [selectedGenre?.id]);
 
 export default useGames;
