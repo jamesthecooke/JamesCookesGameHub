@@ -23,8 +23,8 @@ export const GameGrid = ({gameQuery}:Props) => {
       {/* simple grid from chakra */}
       {/* tells us how many columns should be shown for the device size */}
       <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-        spacing={3}
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        spacing={6}
         padding="10px"
       >
         {isLoading &&
